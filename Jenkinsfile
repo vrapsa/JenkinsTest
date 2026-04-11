@@ -1,38 +1,30 @@
-// Jenkinsfile
-// Мой первый пайплайн
-
 pipeline {
     agent {
         docker {
             image 'python:3.11'
         }
     }
+
     stages {
         stage('Hello') {
             steps {
-                echo 'Привет от Jenkins и Просто Девопс!'
-                echo 'Сегодняшняя дата:'
+                echo 'Привет от Jenkins!'
                 sh 'date'
             }
         }
 
         stage('System Info') {
             steps {
-                echo 'Информация о системе:'
-                echo 'Операционная система:'
                 sh 'uname -a'
-                echo 'Текущая директория:'
                 sh 'pwd'
-                echo 'Список файлов:'
                 sh 'ls -la'
             }
         }
 
-        stage('Install deps') {
+        stage('Tests') {
             steps {
                 sh '''
-                    python3 -m venv venv
-                    . venv/bin/activate
+                    python --version
                     pip install pytest
                     pytest -v
                 '''
