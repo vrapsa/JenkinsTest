@@ -24,6 +24,17 @@ pipeline {
             }
         }
 
+        stage('Install deps') {
+            steps {
+                sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install --upgrade pip
+                    pip install pytest
+                '''
+            }
+        }
+
         stage('Tests') {
             steps {
                 sh 'pytest'
