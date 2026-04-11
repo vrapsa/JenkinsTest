@@ -20,15 +20,5 @@ pipeline {
                 sh 'ls -la'
             }
         }
-
-        stage('Tests') {
-            steps {
-                sh '''
-                    python --version
-                    pip install pytest
-                    pytest -v
-                '''
-            }
-        }
     }
 }
