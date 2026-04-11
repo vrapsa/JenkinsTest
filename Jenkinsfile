@@ -23,5 +23,11 @@ pipeline {
                 sh 'ls -la'
             }
         }
+
+        stage('Tests') {
+            steps {
+                sh 'pytest'
+            }
+        }
     }
 }
