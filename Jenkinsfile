@@ -1,19 +1,11 @@
 pipeline {
     agent any
-
     stages {
-        stage('Hello') {
+        stage('Prepare') {
             steps {
-                echo 'Привет от Jenkins!'
-                sh 'date'
-            }
-        }
-
-        stage('System Info') {
-            steps {
-                sh 'uname -a'
-                sh 'pwd'
-                sh 'ls -la'
+                echo 'Preparing workspace...'
+                sh 'mkdir -p build logs temp'
+                echo 'Directories created'
             }
         }
     }
