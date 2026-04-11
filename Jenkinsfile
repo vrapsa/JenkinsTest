@@ -17,12 +17,24 @@ pipeline {
             }
         }
 
-        stage('') {
+        stage('Verify') {
             steps {
                 echo 'Verifying build...'
                 sh 'cat build/version.txt'
                 sh 'ls -la build/'
                 echo 'Verification completed'
+            }
+        }
+
+        stage('System Info') {
+            steps {
+                echo '=== System Information ==='
+                echo 'Build Number: ${BUILD_NUMBER}'
+                echo 'Job Name: ${JOB_NAME}'
+                sh 'whoami'
+                sh 'df -h .'
+                sh 'date'
+
             }
         }
     }
