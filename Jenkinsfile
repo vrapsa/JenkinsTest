@@ -26,7 +26,7 @@ pipeline {
 
         stage('Tests') {
             steps {
-                bat 'pytest'
+                sh 'pytest'
             }
         }
     }
