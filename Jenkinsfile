@@ -2,7 +2,11 @@
 // Мой первый пайплайн
 
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.11'
+        }
+    }
     stages {
         stage('Hello') {
             steps {
