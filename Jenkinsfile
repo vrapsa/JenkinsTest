@@ -1,41 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Prepare') {
+        stage('Check Agent') {
             steps {
-                echo 'Preparing workspace...'
-                sh 'mkdir -p build logs temp'
-                echo 'Directories created'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building application...'
-                sh 'echo "Build version: 1.0.0" > build/version.txt'
-                sh 'date >> build/version.txt'
-                echo 'Build completed'
-            }
-        }
-
-        stage('Verify') {
-            steps {
-                echo 'Verifying build...'
-                sh 'cat build/version.txt'
-                sh 'ls -la build/'
-                echo 'Verification completed'
-            }
-        }
-
-        stage('System Info') {
-            steps {
-                echo '=== System Information ==='
-                echo 'Build Number: ${BUILD_NUMBER}'
-                echo 'Job Name: ${JOB_NAME}'
-                sh 'whoami'
-                sh 'df -h .'
-                sh 'date'
-
-            }
-        }
-    }
+                echo 'Running on agent...'
+                sh 'hostname'
+                sh 'go build -o app /var/jenkins_home/workspace/check-agent/'
+                echo "Путь к воркспейсу: ${WORKSPACE}"
+                echo "Имя текущей ноды: ${NODE_NAME}"
+}
+}
+}
 }
