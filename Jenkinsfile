@@ -7,20 +7,25 @@ pipeline {
                 def port =  8080
                 def isProduction = false
             }
-            echo "${appName}"
-            echo "${port}"
-            echo "${isProduction}"
+            steps {
+                echo "${appName}"
+                echo "${port}"
+                echo "${isProduction}"
+            }
         }
 
         stage('String Operations') {
             script {
                 def message = "Jenkins Pipeline Tutorial"
+                def new_message = "${message.replace('Tutorial', 'Course')}"
+            }
+            steps {
                 echo "Length: ${message.length()}"
                 echo "toUpperCase: ${message.toUpperCase()}"
                 echo "toLowerCase: ${message.toLowerCase()}"
-                def new_message = "${message.replace('Tutorial', 'Course')}"
                 echo "New Message: ${new_message}"
             }
-        }
+
+        }}
     }
 }
