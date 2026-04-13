@@ -16,7 +16,7 @@ pipeline {
             script {
                 def message = "Jenkins Pipeline Tutorial"
                 echo "Length: ${message.length()}"
-                echo "toUpperCase: ${message.toUpperCase(}"
+                echo "toUpperCase: ${message.toUpperCase()}"
                 echo "toLowerCase: ${message.toLowerCase()}"
                 def new_message = "${message.replace('Tutorial', 'Course')}"
                 echo "New Message: ${new_message}"
