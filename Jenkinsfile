@@ -26,6 +26,6 @@ pipeline {
                 echo "New Message: ${new_message}"
             }
 
-        }}
+        }
     }
 }
