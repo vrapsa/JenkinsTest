@@ -43,10 +43,10 @@ pipeline {
         stage('Display Version') {
             steps {
                 script {
-                    echo 'Value APP_VERSION: ${env.APP_VERSION}'
-                    echo 'Using version: [${env.APP_VERSION}]'
-                    def image_name = "myapp:${env.APP_VERSION}"
-                    echo 'Docker image would be: [${image_name}]'
+                    echo 'Value APP_VERSION: $env.APP_VERSION'
+                    echo 'Using version: [$env.APP_VERSION]'
+                    def image_name = "myapp:$env.APP_VERSION"
+                    echo 'Docker image would be: [$image_name]'
                 }
             }
         }
